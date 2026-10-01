@@ -387,34 +387,39 @@
     <script src="script.js"></script>
 
    <!-- ========================================== BIRTHDAY MUSIC CONTROL ========================================== --> 
-   <script> // Get the audio element 
-   const birthdaySong = document.getElementById("birthdaySong"); 
-   // Set music volume // 0.0 = mute // 1.0 = maximum 
-   birthdaySong.volume = 0.5; 
-   // ========================================== // START MUSIC // ========================================== 
-   const firstButton = document.querySelector(".page.active .next-btn");
-    if (firstButton) {
-         firstButton.addEventListener(
-              "click", 
-              function startBirthdayMusic() {
-                   birthdaySong.play().catch(function (error) { 
-                       console.log( "Music could not start:", error );
-                     });
-                     }, 
-                     { once: true } ); } 
-                     // ========================================== // STOP MUSIC WHEN "READ IT AGAIN" IS CLICKED // ========================================== 
-                     const restartButton = document.querySelector(".restart-btn"); 
-                     if (restartButton) { 
-                         restartButton.addEventListener( "click", function () {
-                              // Stop music 
-                              birthdaySong.pause(); 
-                              // Reset song position 
-                              birthdaySong.currentTime = 0; 
-                            } 
-                            );
-                         } 
-                              </script>
+   <script>
+    const birthdaySong = document.getElementById("birthdaySong");
 
+    // Set music volume
+    birthdaySong.volume = 0.5;
+
+    // "Open Your Surprise" button
+    const firstButton = document.querySelector(".page.active .next-btn");
+
+    if (firstButton) {
+        firstButton.addEventListener("click", function () {
+
+            // Always start the song from the beginning
+            birthdaySong.currentTime = 0;
+
+            birthdaySong.play().catch(function (error) {
+                console.log("Music could not start:", error);
+            });
+        });
+    }
+
+    // "Read it again" button
+    const restartButton = document.querySelector(".restart-btn");
+
+    if (restartButton) {
+        restartButton.addEventListener("click", function () {
+
+            // Stop and reset the song
+            birthdaySong.pause();
+            birthdaySong.currentTime = 0;
+        });
+    }
+</script>
 </body>
 
 </html>
