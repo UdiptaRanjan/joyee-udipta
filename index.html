@@ -16,6 +16,12 @@
     <!-- Background -->
     <div class="background"></div>
 
+    <!-- ========================================== BIRTHDAY MUSIC ========================================== --> 
+    <audio id="birthdaySong" preload="auto" loop> 
+        <source src="assets/birthday-song.mp3" type="audio/mpeg">
+         Your browser does not support the audio element. 
+        </audio>
+
     <!-- Main Website -->
     <main class="birthday-container">
 
@@ -38,7 +44,7 @@
             <button class="next-btn">Open Your Surprise →</button>
 
             <div class="birthday-decoration">
-                <img src="assests/birthday.png" alt="Birthday cake and flowers" class="cake-image">
+                <img src="assets/birthday.png" alt="Birthday cake and flowers" class="cake-image">
             </div>
 
         </section>
@@ -275,11 +281,11 @@
 
             <div class="gallery">
 
-                <img src="assests/shared image (2).jpg">
+                <img src="assets/shared image (2).jpg">
 
-                <img src="assests/shared image (1).jpg">
+                <img src="assets/shared image (1).jpg">
 
-                <img src="assests/shared image (3).jpg">
+                <img src="assets/shared image (3).jpg">
 
             </div>
 
@@ -305,7 +311,7 @@
             <div class="our-photos">
 
                 <div class="polaroid">
-                    <img src="assests/shared image.jpg">
+                    <img src="assets/shared image.jpg">
 
                     <p>
 
@@ -315,7 +321,7 @@
 
 
                 <div class="polaroid">
-                    <img src="assests/shared image (5).jpg">
+                    <img src="assets/shared image (5).jpg">
 
                     <p>
                         And hopefully...
@@ -379,6 +385,35 @@
 
 
     <script src="script.js"></script>
+
+   <!-- ========================================== BIRTHDAY MUSIC CONTROL ========================================== --> 
+   <script> // Get the audio element 
+   const birthdaySong = document.getElementById("birthdaySong"); 
+   // Set music volume // 0.0 = mute // 1.0 = maximum 
+   birthdaySong.volume = 0.5; 
+   // ========================================== // START MUSIC // ========================================== 
+   const firstButton = document.querySelector(".page.active .next-btn");
+    if (firstButton) {
+         firstButton.addEventListener(
+              "click", 
+              function startBirthdayMusic() {
+                   birthdaySong.play().catch(function (error) { 
+                       console.log( "Music could not start:", error );
+                     });
+                     }, 
+                     { once: true } ); } 
+                     // ========================================== // STOP MUSIC WHEN "READ IT AGAIN" IS CLICKED // ========================================== 
+                     const restartButton = document.querySelector(".restart-btn"); 
+                     if (restartButton) { 
+                         restartButton.addEventListener( "click", function () {
+                              // Stop music 
+                              birthdaySong.pause(); 
+                              // Reset song position 
+                              birthdaySong.currentTime = 0; 
+                            } 
+                            );
+                         } 
+                              </script>
 
 </body>
 
