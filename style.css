@@ -1,6 +1,5 @@
-```css
 /* =========================================================
-   RESET
+   GLOBAL RESET
 ========================================================= */
 
 * {
@@ -16,7 +15,6 @@ html {
 body {
     width: 100%;
     height: 100vh;
-
     overflow: hidden;
 
     font-family: Arial, sans-serif;
@@ -33,7 +31,6 @@ body {
 
 .background {
     position: fixed;
-
     inset: 0;
 
     z-index: -1;
@@ -44,13 +41,11 @@ body {
             #704866,
             transparent 35%
         ),
-
         radial-gradient(
             circle at 80% 80%,
             #4d3457,
             transparent 35%
         ),
-
         linear-gradient(
             135deg,
             #171219,
@@ -72,7 +67,7 @@ body {
 
 
 /* =========================================================
-   PAGE
+   PAGE - GLOBAL
 ========================================================= */
 
 .page {
@@ -83,17 +78,20 @@ body {
     width: 100%;
     height: 100%;
 
-    padding: 50px 70px 100px;
+    /*
+       Extra bottom space is intentional.
+
+       It gives enough room for:
+       - Next button
+       - Page dots
+       - Mobile navigation
+    */
+    padding: 50px 70px 120px;
 
     display: flex;
 
     flex-direction: column;
 
-    /*
-       Start from the top instead of vertically centering
-       large pages. This prevents headings from being pushed
-       outside the viewport when a page contains more content.
-    */
     justify-content: flex-start;
 
     align-items: flex-start;
@@ -109,7 +107,9 @@ body {
         transform 0.6s ease;
 
     /*
-       Allow longer pages to scroll naturally.
+       IMPORTANT:
+       If content becomes taller than the viewport,
+       the page itself can scroll.
     */
     overflow-y: auto;
 
@@ -149,8 +149,6 @@ body {
 
 
 h1 {
-    position: relative;
-
     font-family: Georgia, serif;
 
     font-size: clamp(42px, 6vw, 78px);
@@ -158,6 +156,8 @@ h1 {
     line-height: 1.05;
 
     margin-bottom: 22px;
+
+    position: relative;
 }
 
 
@@ -175,8 +175,6 @@ h2 {
     line-height: 1.1;
 
     margin-bottom: 25px;
-
-    max-width: 900px;
 }
 
 
@@ -251,13 +249,11 @@ h2 {
     0%,
     100% {
         position: relative;
-
         top: 0;
     }
 
     50% {
         position: relative;
-
         top: -4px;
     }
 }
@@ -269,7 +265,19 @@ h2 {
 
 .next-btn,
 .restart-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: fit-content;
+
+    min-height: 50px;
+
     margin-top: 30px;
+
+    margin-bottom: 25px;
 
     border: none;
 
@@ -283,7 +291,19 @@ h2 {
 
     font-weight: bold;
 
+    font-size: 14px;
+
     cursor: pointer;
+
+    position: relative;
+
+    z-index: 20;
+
+    /*
+       Prevent flexbox from shrinking
+       the button when content is large.
+    */
+    flex-shrink: 0;
 
     transition:
         transform 0.3s ease,
@@ -307,7 +327,7 @@ h2 {
 
 
 /* =========================================================
-   MESSAGE CARD
+   MESSAGE
 ========================================================= */
 
 .message-card {
@@ -316,6 +336,8 @@ h2 {
     max-width: 700px;
 
     max-height: 55vh;
+
+    overflow-y: auto;
 
     padding: 30px;
 
@@ -331,8 +353,6 @@ h2 {
 
     box-shadow:
         0 20px 50px #00000025;
-
-    overflow-y: auto;
 
     scrollbar-width: thin;
 }
@@ -452,7 +472,8 @@ h2 {
 
 .gallery img:hover {
     transform:
-        scale(1.05) rotate(2deg);
+        scale(1.05)
+        rotate(2deg);
 
     box-shadow:
         0 20px 40px #00000040;
@@ -460,27 +481,27 @@ h2 {
 
 
 /* =========================================================
-   OUR PHOTOS / POLAROIDS
+   OUR PHOTOS
 ========================================================= */
 
 .our-photos {
     display: flex;
 
-    gap: 40px;
+    gap: 35px;
 
     width: 100%;
 
     max-width: 650px;
-
-    align-items: flex-start;
 }
 
 
 .polaroid {
-    width: 280px;
+    width: 270px;
+
+    flex-shrink: 0;
 
     padding:
-        12px 12px 20px;
+        10px 10px 18px;
 
     background: #fff;
 
@@ -495,14 +516,12 @@ h2 {
 
 
 .polaroid:first-child {
-    transform:
-        rotate(-5deg);
+    transform: rotate(-5deg);
 }
 
 
 .polaroid:last-child {
-    transform:
-        rotate(5deg);
+    transform: rotate(5deg);
 }
 
 
@@ -523,7 +542,7 @@ h2 {
 .polaroid img {
     width: 100%;
 
-    height: 260px;
+    height: 250px;
 
     object-fit: cover;
 
@@ -536,11 +555,69 @@ h2 {
 
     font-family: Georgia, serif;
 
-    font-size: 14px;
+    font-size: 13px;
 
     line-height: 1.4;
 
-    margin-top: 12px;
+    margin-top: 10px;
+}
+
+
+/* =========================================================
+   PAGE 5 - PHOTO PAGE
+========================================================= */
+
+.photo-page {
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    padding-bottom: 120px;
+}
+
+
+.photo-page .our-photos {
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: flex-start;
+
+    gap: 35px;
+
+    width: 100%;
+
+    max-width: 620px;
+}
+
+
+.photo-page .polaroid {
+    width: 270px;
+
+    flex-shrink: 0;
+
+    padding:
+        10px 10px 18px;
+}
+
+
+.photo-page .polaroid img {
+    width: 100%;
+
+    height: 250px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+.photo-page .polaroid p {
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    margin-top: 10px;
 }
 
 
@@ -551,9 +628,9 @@ h2 {
 .final-page {
     align-items: center;
 
-    justify-content: center;
-
     text-align: center;
+
+    justify-content: center;
 }
 
 
@@ -600,8 +677,7 @@ h2 {
 
     left: 50%;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
     display: flex;
 
@@ -633,8 +709,7 @@ h2 {
 .dots button.active {
     background: #f0a9cc;
 
-    transform:
-        scale(1.5);
+    transform: scale(1.5);
 }
 
 
@@ -710,36 +785,6 @@ h2 {
 
 
 /* =========================================================
-   BIRTHDAY DECORATION
-========================================================= */
-
-.birthday-decoration {
-    width: 100%;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    margin-top: 25px;
-}
-
-
-.cake-image {
-    width: min(85vw, 700px);
-
-    height: auto;
-
-    max-height: 40vh;
-
-    object-fit: contain;
-
-    display: block;
-}
-
-
-/* =========================================================
    MOBILE
 ========================================================= */
 
@@ -757,13 +802,17 @@ h2 {
     }
 
 
+    /* -----------------------------------------------------
+       PAGE
+    ----------------------------------------------------- */
+
     .page {
         width: 100%;
 
         height: 100%;
 
         padding:
-            25px 18px 80px;
+            25px 18px 100px;
 
         justify-content: flex-start;
 
@@ -779,13 +828,17 @@ h2 {
     }
 
 
-    /* =========================
+    /* -----------------------------------------------------
        HEADINGS
-    ========================= */
+    ----------------------------------------------------- */
 
     h1 {
         font-size:
-            clamp(32px, 9vw, 48px);
+            clamp(
+                32px,
+                9vw,
+                48px
+            );
 
         line-height: 1.1;
 
@@ -799,7 +852,11 @@ h2 {
 
     h2 {
         font-size:
-            clamp(28px, 7.5vw, 42px);
+            clamp(
+                28px,
+                7.5vw,
+                42px
+            );
 
         line-height: 1.12;
 
@@ -821,9 +878,9 @@ h2 {
     }
 
 
-    /* =========================
+    /* -----------------------------------------------------
        INTRO
-    ========================= */
+    ----------------------------------------------------- */
 
     .intro {
         font-size: 16px;
@@ -834,13 +891,15 @@ h2 {
     }
 
 
-    /* =========================
+    /* -----------------------------------------------------
        BUTTON
-    ========================= */
+    ----------------------------------------------------- */
 
     .next-btn,
     .restart-btn {
-        width: auto;
+        display: inline-flex;
+
+        width: fit-content;
 
         min-height: 50px;
 
@@ -850,12 +909,20 @@ h2 {
         font-size: 14px;
 
         margin-top: 25px;
+
+        margin-bottom: 25px;
+
+        position: relative;
+
+        z-index: 20;
+
+        flex-shrink: 0;
     }
 
 
-    /* =========================
-       MESSAGE CARD
-    ========================= */
+    /* -----------------------------------------------------
+       MESSAGE
+    ----------------------------------------------------- */
 
     .message-card {
         width: 100%;
@@ -881,9 +948,9 @@ h2 {
     }
 
 
-    /* =========================
-       MEMORY CARDS
-    ========================= */
+    /* -----------------------------------------------------
+       CARDS
+    ----------------------------------------------------- */
 
     .cards {
         width: 100%;
@@ -919,9 +986,9 @@ h2 {
     }
 
 
-    /* =========================
-       PHOTO GALLERY
-    ========================= */
+    /* -----------------------------------------------------
+       GALLERY
+    ----------------------------------------------------- */
 
     .gallery {
         width: 100%;
@@ -953,56 +1020,102 @@ h2 {
     }
 
 
-    /* =========================
-       OUR PHOTOS
-    ========================= */
+    /* -----------------------------------------------------
+       PHOTO PAGE
+    ----------------------------------------------------- */
 
-    .our-photos {
+    .photo-page {
+        padding:
+            25px 18px 100px;
+
+        overflow-y: auto;
+
+        justify-content: flex-start;
+    }
+
+
+    .photo-page h2 {
+        margin-bottom: 12px;
+
+        font-size:
+            clamp(
+                27px,
+                7vw,
+                40px
+            );
+
+        line-height: 1.1;
+    }
+
+
+    .photo-page .our-photos {
         width: 100%;
 
         display: flex;
 
+        /*
+           Keep photos stacked on normal phones.
+        */
         flex-direction: column;
 
         align-items: center;
 
-        gap: 20px;
+        gap: 18px;
 
         margin-top: 5px;
+
+        padding-bottom: 5px;
     }
 
 
-    .polaroid {
-        width: 75%;
+    .photo-page .polaroid {
+        width: 70%;
 
-        max-width: 270px;
+        max-width: 250px;
 
         padding:
-            8px 8px 15px;
+            8px 8px 14px;
+
+        flex-shrink: 0;
     }
 
 
-    .polaroid img {
+    .photo-page .polaroid img {
         width: 100%;
 
-        height: 230px;
+        height: 190px;
 
         object-fit: cover;
     }
 
 
-    .polaroid p {
-        font-size: 12px;
+    .photo-page .polaroid p {
+        font-size: 11px;
 
-        line-height: 1.35;
+        line-height: 1.3;
 
-        margin-top: 10px;
+        margin-top: 8px;
     }
 
 
-    /* =========================
+    .photo-page .next-btn {
+        display: block;
+
+        margin-top: 18px;
+
+        margin-bottom: 20px;
+
+        flex-shrink: 0;
+
+        position: relative;
+
+        z-index: 20;
+    }
+
+
+    /* -----------------------------------------------------
        FINAL PAGE
-    ========================= */
+    ----------------------------------------------------- */
 
     .final-page {
         padding-left: 25px;
@@ -1036,9 +1149,9 @@ h2 {
     }
 
 
-    /* =========================
-       PAGE DOTS
-    ========================= */
+    /* -----------------------------------------------------
+       DOTS
+    ----------------------------------------------------- */
 
     .dots {
         bottom: 18px;
@@ -1054,30 +1167,14 @@ h2 {
     }
 
 
-    /* =========================
+    /* -----------------------------------------------------
        NAME HEART
-    ========================= */
+    ----------------------------------------------------- */
 
     .name-heart {
         font-size: 0.55em;
 
         margin-left: 5px;
-    }
-
-
-    /* =========================
-       CAKE
-    ========================= */
-
-    .birthday-decoration {
-        margin-top: 15px;
-    }
-
-
-    .cake-image {
-        width: min(90vw, 500px);
-
-        max-height: 35vh;
     }
 }
 
@@ -1090,7 +1187,7 @@ h2 {
 
     .page {
         padding:
-            35px 20px 75px;
+            25px 18px 95px;
     }
 
 
@@ -1129,13 +1226,56 @@ h2 {
     }
 
 
-    .polaroid {
-        width: 85%;
+    /* -----------------------------------------------------
+       PHOTO PAGE
+    ----------------------------------------------------- */
+
+    .photo-page {
+        padding:
+            25px 16px 95px;
     }
 
 
-    .polaroid img {
-        height: 260px;
+    .photo-page h2 {
+        font-size: 32px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .photo-page .our-photos {
+        gap: 15px;
+    }
+
+
+    .photo-page .polaroid {
+        width: 68%;
+
+        max-width: 220px;
+    }
+
+
+    .photo-page .polaroid img {
+        height: 165px;
+    }
+
+
+    .photo-page .polaroid p {
+        font-size: 10.5px;
+
+        line-height: 1.3;
+    }
+
+
+    .photo-page .next-btn {
+        margin-top: 15px;
+
+        margin-bottom: 15px;
+
+        padding:
+            13px 20px;
+
+        font-size: 13px;
     }
 
 
@@ -1146,6 +1286,21 @@ h2 {
 
     .final-page .heart {
         font-size: 40px;
+    }
+
+
+    /* -----------------------------------------------------
+       BUTTON
+    ----------------------------------------------------- */
+
+    .next-btn,
+    .restart-btn {
+        min-height: 48px;
+
+        padding:
+            13px 20px;
+
+        font-size: 13px;
     }
 }
 
@@ -1158,7 +1313,7 @@ h2 {
 
     .page {
         padding:
-            30px 16px 70px;
+            22px 15px 90px;
     }
 
 
@@ -1192,13 +1347,52 @@ h2 {
     }
 
 
-    .polaroid {
-        width: 90%;
+    /* -----------------------------------------------------
+       PHOTO PAGE
+    ----------------------------------------------------- */
+
+    .photo-page {
+        padding:
+            22px 14px 90px;
     }
 
 
-    .polaroid img {
-        height: 230px;
+    .photo-page h2 {
+        font-size: 29px;
+    }
+
+
+    .photo-page .polaroid {
+        width: 65%;
+
+        max-width: 200px;
+    }
+
+
+    .photo-page .polaroid img {
+        height: 145px;
+    }
+
+
+    .photo-page .polaroid p {
+        font-size: 10px;
+    }
+
+
+    .photo-page .next-btn {
+        font-size: 12px;
+
+        padding:
+            12px 18px;
+    }
+
+
+    /* -----------------------------------------------------
+       FINAL PAGE
+    ----------------------------------------------------- */
+
+    .final-message {
+        font-size: 16px;
     }
 }
 
@@ -1211,7 +1405,7 @@ h2 {
 
     .page {
         padding:
-            25px 30px 70px;
+            20px 30px 90px;
 
         justify-content: flex-start;
     }
@@ -1232,7 +1426,17 @@ h2 {
     }
 
 
-    .our-photos {
+    /* -----------------------------------------------------
+       PHOTO PAGE
+    ----------------------------------------------------- */
+
+    .photo-page {
+        padding:
+            20px 30px 90px;
+    }
+
+
+    .photo-page .our-photos {
         flex-direction: row;
 
         justify-content: center;
@@ -1241,18 +1445,25 @@ h2 {
     }
 
 
-    .polaroid {
-        width: 220px;
+    .photo-page .polaroid {
+        width: 210px;
     }
 
 
-    .polaroid img {
-        height: 200px;
+    .photo-page .polaroid img {
+        height: 170px;
     }
 
 
-    .polaroid p {
-        font-size: 11px;
+    .photo-page .polaroid p {
+        font-size: 10px;
+    }
+
+
+    .photo-page .next-btn {
+        margin-top: 15px;
+
+        margin-bottom: 20px;
     }
 }
 
@@ -1291,4 +1502,34 @@ button:focus-visible {
             auto !important;
     }
 }
-```
+
+
+/* =========================================================
+   BIRTHDAY DECORATION
+========================================================= */
+
+.birthday-decoration {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-top: 25px;
+}
+
+
+.cake-image {
+    width:
+        min(85vw, 700px);
+
+    height: auto;
+
+    max-height: 40vh;
+
+    object-fit: contain;
+
+    display: block;
+}
