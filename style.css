@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Italianno&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap');
 
 /* ================================
    GLOBAL RESET
@@ -192,7 +192,7 @@ h2 {
     font-family: 'Italianno', cursive;
 
     font-size: 18px;
-    line-height: 1.7;
+    line-height: 1.8;
 
     text-align: center;
 
@@ -294,13 +294,13 @@ h2 {
 }
 
 .message-card p {
-    font-family: 'Italianno', cursive;
+    font-family: 'Montserrat', sans-serif;
 
     color: #eee3ed;
 
     font-size: 22px;
 
-    line-height: 1.6;
+    line-height: 1.8;
 
     text-align: center;
 }
@@ -356,11 +356,11 @@ h2 {
 }
 
 .card p {
-    font-family: 'Italianno', cursive;
+    font-family: 'Montserrat', sans-serif;
 
     font-size: 20px;
 
-    line-height: 1.5;
+    line-height: 1.7;
 
     color: #ddd0dc;
 
@@ -471,7 +471,7 @@ h2 {
 }
 
 .polaroid p {
-    font-family: 'Italianno', cursive;
+    font-family:'Montserrat', sans-serif;
 
     font-size: 24px;
 
@@ -507,11 +507,11 @@ h2 {
 .final-message {
     max-width: 750px;
 
-    font-family: 'Italianno', cursive;
+    font-family: 'Montserrat', sans-serif;
 
     font-size: 30px;
 
-    line-height: 1.5;
+    line-height: 1.8;
 
     color: #eadde9;
 
@@ -719,7 +719,7 @@ h2 {
 
         font-size: 18px;
 
-        line-height: 1.6;
+        line-height: 1.7;
     }
 
     .message-card {
