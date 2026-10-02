@@ -20,7 +20,7 @@ body {
     width: 100%;
     min-height: 100vh;
 
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Italianno', cursive;
     color: white;
     background: #18131b;
 
@@ -294,7 +294,7 @@ h2 {
 }
 
 .message-card p {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Italianno', cursive;
 
     color: #eee3ed;
 
@@ -356,8 +356,7 @@ h2 {
 }
 
 .card p {
-    font-family: 'Montserrat', sans-serif;
-
+    font-family: 'Italianno', cursive;
     font-size: 20px;
 
     line-height: 1.7;
@@ -471,7 +470,7 @@ h2 {
 }
 
 .polaroid p {
-    font-family:'Montserrat', sans-serif;
+    font-family:'Italianno', cursive;
 
     font-size: 24px;
 
@@ -507,7 +506,7 @@ h2 {
 .final-message {
     max-width: 750px;
 
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Italianno', cursive;
 
     font-size: 30px;
 
@@ -519,7 +518,7 @@ h2 {
 }
 
 .signature {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Italianno', cursive;
 
     font-size: 22px;
     font-weight: 500;
