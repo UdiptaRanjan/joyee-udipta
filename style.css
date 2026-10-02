@@ -1,861 +1,545 @@
-```css
-/* =========================================================
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Italianno&display=swap');
 
+/* ================================
    GLOBAL RESET
-
-========================================================= */
+================================ */
 
 * {
-
     margin: 0;
-
     padding: 0;
-
     box-sizing: border-box;
-
 }
 
 html {
-
-    scroll-behavior: smooth;
-
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
 }
 
 body {
-
     width: 100%;
-
-    height: 100vh;
-
-    overflow: hidden;
+    min-height: 100vh;
 
     font-family: 'Italianno', cursive;
-
     color: white;
-
     background: #18131b;
 
+    overflow: hidden;
 }
 
 
-/* =========================================================
-
+/* ================================
    BACKGROUND
-
-========================================================= */
+================================ */
 
 .background {
-
     position: fixed;
-
     inset: 0;
 
-    z-index: -1;
-
     background:
-
         radial-gradient(
-
             circle at 20% 20%,
-
-            #704866,
-
-            transparent 35%
-
+            rgba(122, 55, 103, 0.35),
+            transparent 40%
         ),
-
         radial-gradient(
-
             circle at 80% 80%,
-
-            #4d3457,
-
-            transparent 35%
-
+            rgba(91, 45, 111, 0.35),
+            transparent 40%
         ),
-
         linear-gradient(
-
             135deg,
-
-            #171219,
-
-            #2b1c2b
-
+            #18131b,
+            #241626,
+            #17111b
         );
 
+    z-index: -2;
 }
 
 
-/* =========================================================
-
+/* ================================
    MAIN CONTAINER
-
-========================================================= */
+================================ */
 
 .birthday-container {
-
-    width: 100%;
-
-    height: 100vh;
-
     position: relative;
 
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+
+    overflow: hidden;
 }
 
 
-/* =========================================================
-
-   PAGE - GLOBAL
-
-========================================================= */
+/* ================================
+   PAGE
+================================ */
 
 .page {
-
     position: absolute;
 
     inset: 0;
 
     width: 100%;
-
     height: 100%;
+    min-height: 100%;
 
     padding: 50px 70px 120px;
 
     display: flex;
-
     flex-direction: column;
-
+    align-items: center;
     justify-content: flex-start;
 
-    align-items: flex-start;
-
     opacity: 0;
-
     visibility: hidden;
-
-    transform: translateX(50px);
-
-    transition:
-
-        opacity 0.6s ease,
-
-        transform 0.6s ease;
+    pointer-events: none;
 
     overflow-y: auto;
-
     overflow-x: hidden;
+
+    box-sizing: border-box;
 
     -webkit-overflow-scrolling: touch;
 
-    scrollbar-gutter: stable;
-
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
 }
-
 
 .page.active {
-
     opacity: 1;
-
     visibility: visible;
-
-    transform: translateX(0);
-
+    pointer-events: auto;
 }
 
 
-/* =========================================================
+/* ================================
+   PAGE HEADER TEXT
+================================ */
 
-   TEXT
-
-========================================================= */
-
-.small-title,
-
-.page-number {
-
-    text-transform: uppercase;
-
-    letter-spacing: 4px;
+.small-title {
+    font-family: 'Cormorant Garamond', serif;
 
     font-size: 12px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 4px;
 
     color: #e5b9d2;
 
-    margin-bottom: 20px;
+    margin-bottom: 18px;
+}
 
+.page-number {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 4px;
+
+    color: #e5b9d2;
+
+    margin-bottom: 18px;
 }
 
 
-h1 {
+/* ================================
+   HEADINGS
+================================ */
 
+h1 {
     font-family: 'Cormorant Garamond', serif;
 
     font-size: clamp(42px, 6vw, 78px);
+    font-weight: 600;
 
     line-height: 1.05;
 
-    margin-bottom: 22px;
+    text-align: center;
 
-    position: relative;
-
+    margin-bottom: 25px;
 }
-
-
-h1 span,
-
-h2 span {
-
-    color: #f0a9cc;
-
-}
-
 
 h2 {
-
     font-family: 'Cormorant Garamond', serif;
 
     font-size: clamp(34px, 5vw, 62px);
+    font-weight: 600;
 
     line-height: 1.1;
 
-    margin-bottom: 25px;
+    text-align: center;
 
+    margin-bottom: 25px;
 }
 
 
-.intro {
+/* ================================
+   INTRO
+================================ */
 
+.intro {
     max-width: 550px;
 
     color: #d0c4d0;
 
-    font-size: 18px;
-
-    line-height: 1.7;
-
-}
-
-
-/* =========================================================
-
-   HER NAME
-
-========================================================= */
-
-#herName {
-
-    color: #f0a9cc;
-
-}
-
-
-/* =========================================================
-
-   NAME HEART
-
-========================================================= */
-
-.name-heart {
-
-    display: inline-block;
-
-    color: #f0a9cc;
-
-    margin-left: 8px;
-
-    font-size: 0.65em;
-
-    transform-origin: center;
-
-    animation:
-
-        nameHeartBeat 1.5s ease-in-out infinite,
-
-        nameHeartFloat 3s ease-in-out infinite;
-
-}
-
-
-@keyframes nameHeartBeat {
-
-    0%,
-
-    100% {
-
-        transform: scale(1);
-
-    }
-
-    15% {
-
-        transform: scale(1.18);
-
-    }
-
-    30% {
-
-        transform: scale(1);
-
-    }
-
-    45% {
-
-        transform: scale(1.12);
-
-    }
-
-    60% {
-
-        transform: scale(1);
-
-    }
-
-}
-
-
-@keyframes nameHeartFloat {
-
-    0%,
-
-    100% {
-
-        position: relative;
-
-        top: 0;
-
-    }
-
-    50% {
-
-        position: relative;
-
-        top: -4px;
-
-    }
-
-}
-
-
-/* =========================================================
-
-   BUTTON
-
-========================================================= */
-
-.next-btn,
-
-.restart-btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    width: fit-content;
-
-    min-height: 50px;
-
-    margin-top: 30px;
-
-    margin-bottom: 25px;
-
-    border: none;
-
-    padding: 15px 25px;
-
-    border-radius: 50px;
-
-    background: #f0a9cc;
-
-    color: #241722;
-
-    font-family: 'Cormorant Garamond', serif;
-
-    font-weight: bold;
-
-    font-size: 14px;
-
-    cursor: pointer;
-
-    position: relative;
-
-    z-index: 20;
-
-    flex-shrink: 0;
-
-    transition:
-
-        transform 0.3s ease,
-
-        box-shadow 0.3s ease;
-
-}
-
-
-.next-btn:hover,
-
-.restart-btn:hover {
-
-    transform: translateY(-3px);
-
-    box-shadow:
-
-        0 15px 40px #f0a9cc55;
-
-}
-
-
-.next-btn:active,
-
-.restart-btn:active {
-
-    transform: translateY(-1px);
-
-}
-
-
-/* =========================================================
-
-   MESSAGE
-
-========================================================= */
-
-.message-card {
-
-    width: 100%;
-
-    max-width: 700px;
-
-    max-height: 55vh;
-
-    overflow-y: auto;
-
-    padding: 30px;
-
-    border-radius: 25px;
-
-    background: #ffffff0d;
-
-    border: 1px solid #ffffff18;
-
-    backdrop-filter: blur(15px);
-
-    -webkit-backdrop-filter: blur(15px);
-
-    box-shadow:
-
-        0 20px 50px #00000025;
-
-    scrollbar-width: thin;
-
-}
-
-
-.message-card p {
-
     font-family: 'Italianno', cursive;
 
-    font-size: 17px;
-
-    line-height: 1.65;
-
-    color: #eee;
-
-    margin-bottom: 14px;
-
-}
-
-
-/* =========================================================
-
-   ROMANTIC NOTE CARDS
-
-========================================================= */
-
-.cards {
-
-    display: grid;
-
-    grid-template-columns:
-
-        repeat(3, minmax(220px, 1fr));
-
-    gap: 18px;
-
-    width: 100%;
-
-    max-width: 950px;
-
-}
-
-
-.card {
-
-    padding: 25px;
-
-    min-height: 150px;
-
-    border-radius: 20px;
-
-    background: #ffffff0b;
-
-    border: 1px solid #ffffff15;
-
-    backdrop-filter: blur(12px);
-
-    -webkit-backdrop-filter: blur(12px);
-
-    transition:
-
-        transform 0.35s ease,
-
-        background 0.35s ease,
-
-        box-shadow 0.35s ease;
-
-}
-
-
-.card:hover {
-
-    transform: translateY(-8px);
-
-    background: #ffffff12;
-
-    box-shadow:
-
-        0 15px 40px #00000030;
-
-}
-
-
-.card h3 {
-
-    margin-bottom: 12px;
-
-    font-family: 'Cormorant Garamond', serif;
-
-    font-size: 20px;
-
-    color: #f0a9cc;
-
-}
-
-
-.card p {
-
-    color: #cfc2cf;
-
-    font-size: 15px;
-
-    line-height: 1.6;
-
-}
-
-
-/* =========================================================
-
-   GALLERY
-
-========================================================= */
-
-.gallery {
-
-    display: grid;
-
-    grid-template-columns:
-
-        repeat(3, 220px);
-
-    gap: 20px;
-
-}
-
-
-.gallery img {
-
-    width: 220px;
-
-    height: 280px;
-
-    object-fit: cover;
-
-    border-radius: 20px;
-
-    transition:
-
-        transform 0.4s ease,
-
-        box-shadow 0.4s ease;
-
-}
-
-
-.gallery img:hover {
-
-    transform:
-
-        scale(1.05)
-
-        rotate(2deg);
-
-    box-shadow:
-
-        0 20px 40px #00000040;
-
-}
-
-
-/* =========================================================
-
-   OUR PHOTOS
-
-========================================================= */
-
-.our-photos {
-
-    display: flex;
-
-    gap: 35px;
-
-    width: 100%;
-
-    max-width: 650px;
-
-}
-
-
-.polaroid {
-
-    width: 270px;
-
-    flex-shrink: 0;
-
-    padding:
-
-        10px 10px 18px;
-
-    background: #fff;
-
-    color: #302530;
-
-    box-shadow:
-
-        0 25px 50px #0007;
-
-    transition:
-
-        transform 0.4s ease;
-
-}
-
-
-.polaroid:first-child {
-
-    transform: rotate(-5deg);
-
-}
-
-
-.polaroid:last-child {
-
-    transform: rotate(5deg);
-
-}
-
-
-.polaroid:first-child:hover {
-
-    transform:
-
-        rotate(-2deg)
-
-        translateY(-8px);
-
-}
-
-
-.polaroid:last-child:hover {
-
-    transform:
-
-        rotate(2deg)
-
-        translateY(-8px);
-
-}
-
-
-.polaroid img {
-
-    width: 100%;
-
-    height: 250px;
-
-    object-fit: cover;
-
-    display: block;
-
-}
-
-
-.polaroid p {
+    font-size: 18px;
+    line-height: 1.7;
 
     text-align: center;
 
+    margin-bottom: 35px;
+}
+
+
+/* ================================
+   HER NAME
+================================ */
+
+#herName {
+    font-family: 'Cormorant Garamond', serif;
+
+    display: inline-block;
+
+    animation: nameGlow 3s ease-in-out infinite;
+}
+
+.name-heart {
+    display: inline-block;
+
+    margin-left: 8px;
+
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+
+/* ================================
+   BUTTONS
+================================ */
+
+.next-btn,
+.restart-btn {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    color: white;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 50px;
+
+    padding: 13px 28px;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.next-btn:hover,
+.restart-btn:hover {
+    transform: translateY(-3px);
+
+    background: rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.next-btn:active,
+.restart-btn:active {
+    transform: translateY(0);
+}
+
+
+/* ================================
+   MESSAGE CARD
+================================ */
+
+.message-card {
+    width: min(850px, 90vw);
+
+    padding: 35px;
+
+    margin: 20px 0 35px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 24px;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.message-card p {
     font-family: 'Italianno', cursive;
 
-    font-size: 13px;
+    color: #eee3ed;
 
-    line-height: 1.4;
+    font-size: 22px;
 
-    margin-top: 10px;
+    line-height: 1.6;
 
+    text-align: center;
 }
 
 
-/* =========================================================
+/* ================================
+   CARDS
+================================ */
 
-   PAGE 5 - PHOTO PAGE
+.cards {
+    width: min(1000px, 90vw);
 
-========================================================= */
+    display: grid;
 
-.photo-page {
+    grid-template-columns: repeat(3, 1fr);
 
-    overflow-y: auto;
+    gap: 22px;
 
-    overflow-x: hidden;
+    margin: 25px 0 40px;
+}
 
-    padding-bottom: 120px;
+.card {
+    padding: 28px;
 
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 22px;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.card h3 {
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 26px;
+    font-weight: 600;
+
+    margin-bottom: 14px;
+
+    text-align: center;
+}
+
+.card p {
+    font-family: 'Italianno', cursive;
+
+    font-size: 20px;
+
+    line-height: 1.5;
+
+    color: #ddd0dc;
+
+    text-align: center;
 }
 
 
-.photo-page .our-photos {
+/* ================================
+   GALLERY
+================================ */
+
+.gallery {
+    width: min(1000px, 90vw);
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin: 25px 0 40px;
+}
+
+.gallery img {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ================================
+   OUR PHOTOS
+================================ */
+
+.our-photos {
+    width: min(1000px, 90vw);
 
     display: flex;
 
-    flex-direction: row;
-
+    justify-content: center;
     align-items: flex-start;
 
     gap: 35px;
 
-    width: 100%;
+    flex-wrap: wrap;
 
-    max-width: 620px;
-
+    margin: 30px 0 45px;
 }
 
+.polaroid {
+    width: 280px;
 
-.photo-page .polaroid {
+    padding: 12px 12px 20px;
 
-    width: 270px;
+    background: #f5f0f3;
 
-    flex-shrink: 0;
+    color: #241b25;
 
-    padding:
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.3);
 
-        10px 10px 18px;
+    transform: rotate(-2deg);
 
+    transition:
+        transform 0.4s ease;
 }
 
+.polaroid:nth-child(2) {
+    transform: rotate(2deg);
+}
 
-.photo-page .polaroid img {
+.polaroid:nth-child(3) {
+    transform: rotate(-1deg);
+}
 
+.polaroid:hover {
+    transform: rotate(0deg) translateY(-8px);
+}
+
+.polaroid img {
     width: 100%;
-
-    height: 250px;
-
-    object-fit: cover;
 
     display: block;
 
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
 }
 
-
-.photo-page .polaroid p {
-
-    font-size: 13px;
-
-    line-height: 1.4;
-
-    margin-top: 10px;
-
-}
-
-
-/* =========================================================
-
-   FINAL PAGE
-
-========================================================= */
-
-.final-page {
-
-    align-items: center;
-
-    text-align: center;
-
-    justify-content: center;
-
-}
-
-
-.heart {
-
-    display: inline-block;
-
-    font-size: 55px;
-
-    transform-origin: center;
-
-    animation:
-
-        heartbeat 1.5s ease-in-out infinite;
-
-}
-
-
-.final-message {
-
-    max-width: 700px;
-
+.polaroid p {
     font-family: 'Italianno', cursive;
 
     font-size: 24px;
 
-    line-height: 1.7;
+    text-align: center;
 
-    color: #d8cad6;
-
+    margin-top: 12px;
 }
 
+
+/* ================================
+   PHOTO PAGE
+================================ */
+
+.photo-page {
+    justify-content: flex-start;
+}
+
+.photo-page .our-photos {
+    margin-bottom: 50px;
+}
+
+
+/* ================================
+   FINAL PAGE
+================================ */
+
+.final-page {
+    justify-content: center;
+
+    text-align: center;
+}
+
+.final-message {
+    max-width: 750px;
+
+    font-family: 'Italianno', cursive;
+
+    font-size: 30px;
+
+    line-height: 1.5;
+
+    color: #eadde9;
+
+    margin: 25px auto 30px;
+}
 
 .signature {
+    font-family: 'Cormorant Garamond', serif;
 
-    margin-top: 25px;
+    font-size: 22px;
+    font-weight: 500;
 
-    color: #f0a9cc;
+    color: #e5b9d2;
 
+    margin-top: 20px;
 }
 
 
-/* =========================================================
-
+/* ================================
    DOTS
-
-========================================================= */
+================================ */
 
 .dots {
-
     position: fixed;
 
-    bottom: 30px;
-
     left: 50%;
+
+    bottom: 25px;
 
     transform: translateX(-50%);
 
@@ -864,1124 +548,77 @@ h2 {
     gap: 8px;
 
     z-index: 50;
-
 }
 
-
-.dots button {
-
+.dot {
     width: 8px;
-
     height: 8px;
-
-    border: none;
 
     border-radius: 50%;
 
-    background: #ffffff40;
-
-    cursor: pointer;
+    background: rgba(255, 255, 255, 0.3);
 
     transition:
-
         transform 0.3s ease,
-
         background 0.3s ease;
+}
 
+.dot.active {
+    transform: scale(1.4);
+
+    background: #e5b9d2;
 }
 
 
-.dots button.active {
-
-    background: #f0a9cc;
-
-    transform: scale(1.5);
-
-}
-
-
-/* =========================================================
-
+/* ================================
    FLOATING HEARTS
-
-========================================================= */
+================================ */
 
 .floating-heart {
-
     position: fixed;
 
     bottom: -30px;
 
-    color: #f0a9cc;
+    font-size: 18px;
 
-    animation:
-
-        floatHeart 7s linear forwards;
+    opacity: 0;
 
     pointer-events: none;
 
-    z-index: 20;
+    animation: floatHeart 8s linear infinite;
 
-    user-select: none;
-
+    z-index: 2;
 }
 
 
-@keyframes floatHeart {
+/* ================================
+   HEART ANIMATION
+================================ */
 
-    from {
+.heart {
+    display: inline-block;
 
-        transform:
-
-            translateY(0)
-
-            rotate(0);
-
-        opacity: 1;
-
-    }
-
-    to {
-
-        transform:
-
-            translateY(-110vh)
-
-            rotate(360deg);
-
-        opacity: 0;
-
-    }
-
+    animation: heartbeat 1.5s ease-in-out infinite;
 }
 
 
-/* =========================================================
-
-   HEARTBEAT
-
-========================================================= */
-
-@keyframes heartbeat {
-
-    0%,
-
-    100% {
-
-        transform: scale(1);
-
-    }
-
-    15% {
-
-        transform: scale(1.15);
-
-    }
-
-    30% {
-
-        transform: scale(1);
-
-    }
-
-    45% {
-
-        transform: scale(1.1);
-
-    }
-
-    60% {
-
-        transform: scale(1);
-
-    }
-
-}
-
-
-/* =========================================================
-
-   MOBILE
-
-========================================================= */
-
-@media (max-width: 768px) {
-
-    body {
-
-        overflow: hidden;
-
-    }
-
-
-    .birthday-container {
-
-        width: 100%;
-
-        height: 100vh;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       PAGE
-
-    ----------------------------------------------------- */
-
-    .page {
-
-        width: 100%;
-
-        height: 100%;
-
-        padding:
-
-            25px 18px 100px;
-
-        justify-content: flex-start;
-
-        align-items: flex-start;
-
-        overflow-y: auto;
-
-        overflow-x: hidden;
-
-        -webkit-overflow-scrolling: touch;
-
-        scrollbar-gutter: stable;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       HEADINGS
-
-    ----------------------------------------------------- */
-
-    h1 {
-
-        font-size:
-
-            clamp(
-
-                32px,
-
-                9vw,
-
-                48px
-
-            );
-
-        line-height: 1.1;
-
-        margin-bottom: 18px;
-
-        max-width: 100%;
-
-        overflow-wrap: break-word;
-
-    }
-
-
-    h2 {
-
-        font-size:
-
-            clamp(
-
-                28px,
-
-                7.5vw,
-
-                42px
-
-            );
-
-        line-height: 1.12;
-
-        margin-bottom: 18px;
-
-        max-width: 100%;
-
-        overflow-wrap: break-word;
-
-    }
-
-
-    .small-title,
-
-    .page-number {
-
-        font-size: 10px;
-
-        letter-spacing: 2.5px;
-
-        margin-bottom: 15px;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       INTRO
-
-    ----------------------------------------------------- */
-
-    .intro {
-
-        font-size: 16px;
-
-        line-height: 1.7;
-
-        max-width: 100%;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       BUTTON
-
-    ----------------------------------------------------- */
-
-    .next-btn,
-
-    .restart-btn {
-
-        display: inline-flex;
-
-        width: fit-content;
-
-        min-height: 50px;
-
-        padding:
-
-            14px 22px;
-
-        font-size: 14px;
-
-        margin-top: 25px;
-
-        margin-bottom: 25px;
-
-        position: relative;
-
-        z-index: 20;
-
-        flex-shrink: 0;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       MESSAGE
-
-    ----------------------------------------------------- */
-
-    .message-card {
-
-        width: 100%;
-
-        max-height: 55vh;
-
-        overflow-y: auto;
-
-        padding: 20px;
-
-        border-radius: 20px;
-
-        scrollbar-width: thin;
-
-    }
-
-
-    .message-card p {
-
-        font-size: 16px;
-
-        line-height: 1.6;
-
-        margin-bottom: 12px;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       CARDS
-
-    ----------------------------------------------------- */
-
-    .cards {
-
-        width: 100%;
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 12px;
-
-    }
-
-
-    .card {
-
-        width: 100%;
-
-        padding: 20px;
-
-        border-radius: 18px;
-
-    }
-
-
-    .card h3 {
-
-        font-size: 18px;
-
-        margin-bottom: 8px;
-
-    }
-
-
-    .card p {
-
-        font-size: 14px;
-
-        line-height: 1.5;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       GALLERY
-
-    ----------------------------------------------------- */
-
-    .gallery {
-
-        width: 100%;
-
-        display: grid;
-
-        grid-template-columns:
-
-            repeat(2, 1fr);
-
-        gap: 10px;
-
-    }
-
-
-    .gallery img {
-
-        width: 100%;
-
-        height: 210px;
-
-        object-fit: cover;
-
-        border-radius: 16px;
-
-    }
-
-
-    .gallery img:first-child {
-
-        grid-column: span 2;
-
-        height: 280px;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       PHOTO PAGE
-
-    ----------------------------------------------------- */
-
-    .photo-page {
-
-        padding:
-
-            25px 18px 100px;
-
-        overflow-y: auto;
-
-        justify-content: flex-start;
-
-    }
-
-
-    .photo-page h2 {
-
-        margin-bottom: 12px;
-
-        font-size:
-
-            clamp(
-
-                27px,
-
-                7vw,
-
-                40px
-
-            );
-
-        line-height: 1.1;
-
-    }
-
-
-    .photo-page .our-photos {
-
-        width: 100%;
-
-        display: flex;
-
-        flex-direction: column;
-
-        align-items: center;
-
-        gap: 18px;
-
-        margin-top: 5px;
-
-        padding-bottom: 5px;
-
-    }
-
-
-    .photo-page .polaroid {
-
-        width: 70%;
-
-        max-width: 250px;
-
-        padding:
-
-            8px 8px 14px;
-
-        flex-shrink: 0;
-
-    }
-
-
-    .photo-page .polaroid img {
-
-        width: 100%;
-
-        height: 190px;
-
-        object-fit: cover;
-
-    }
-
-
-    .photo-page .polaroid p {
-
-        font-size: 11px;
-
-        line-height: 1.3;
-
-        margin-top: 8px;
-
-    }
-
-
-    .photo-page .next-btn {
-
-        display: block;
-
-        margin-top: 18px;
-
-        margin-bottom: 20px;
-
-        flex-shrink: 0;
-
-        position: relative;
-
-        z-index: 20;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       FINAL PAGE
-
-    ----------------------------------------------------- */
-
-    .final-page {
-
-        padding-left: 25px;
-
-        padding-right: 25px;
-
-        justify-content: center;
-
-        align-items: center;
-
-        text-align: center;
-
-    }
-
-
-    .heart {
-
-        font-size: 45px;
-
-    }
-
-
-    .final-message {
-
-        width: 100%;
-
-        font-size: 19px;
-
-        line-height: 1.65;
-
-    }
-
-
-    .signature {
-
-        font-size: 14px;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       DOTS
-
-    ----------------------------------------------------- */
-
-    .dots {
-
-        bottom: 18px;
-
-        gap: 9px;
-
-    }
-
-
-    .dots button {
-
-        width: 7px;
-
-        height: 7px;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       NAME HEART
-
-    ----------------------------------------------------- */
-
-    .name-heart {
-
-        font-size: 0.55em;
-
-        margin-left: 5px;
-
-    }
-
-}
-
-
-/* =========================================================
-
-   SMALL PHONES
-
-========================================================= */
-
-@media (max-width: 400px) {
-
-    .page {
-
-        padding:
-
-            25px 18px 95px;
-
-    }
-
-
-    h1 {
-
-        font-size: 42px;
-
-    }
-
-
-    h2 {
-
-        font-size: 38px;
-
-    }
-
-
-    .intro {
-
-        font-size: 15px;
-
-    }
-
-
-    .message-card {
-
-        padding: 20px;
-
-    }
-
-
-    .message-card p {
-
-        font-size: 17px;
-
-    }
-
-
-    .gallery img {
-
-        height: 180px;
-
-    }
-
-
-    .gallery img:first-child {
-
-        height: 230px;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       PHOTO PAGE
-
-    ----------------------------------------------------- */
-
-    .photo-page {
-
-        padding:
-
-            25px 16px 95px;
-
-    }
-
-
-    .photo-page h2 {
-
-        font-size: 32px;
-
-        margin-bottom: 10px;
-
-    }
-
-
-    .photo-page .our-photos {
-
-        gap: 15px;
-
-    }
-
-
-    .photo-page .polaroid {
-
-        width: 68%;
-
-        max-width: 220px;
-
-    }
-
-
-    .photo-page .polaroid img {
-
-        height: 165px;
-
-    }
-
-
-    .photo-page .polaroid p {
-
-        font-size: 10.5px;
-
-        line-height: 1.3;
-
-    }
-
-
-    .photo-page .next-btn {
-
-        margin-top: 15px;
-
-        margin-bottom: 15px;
-
-        padding:
-
-            13px 20px;
-
-        font-size: 13px;
-
-    }
-
-
-    .final-message {
-
-        font-size: 17px;
-
-    }
-
-
-    .final-page .heart {
-
-        font-size: 40px;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       BUTTON
-
-    ----------------------------------------------------- */
-
-    .next-btn,
-
-    .restart-btn {
-
-        min-height: 48px;
-
-        padding:
-
-            13px 20px;
-
-        font-size: 13px;
-
-    }
-
-}
-
-
-/* =========================================================
-
-   VERY SMALL PHONES
-
-========================================================= */
-
-@media (max-width: 340px) {
-
-    .page {
-
-        padding:
-
-            22px 15px 90px;
-
-    }
-
-
-    h1 {
-
-        font-size: 36px;
-
-    }
-
-
-    h2 {
-
-        font-size: 33px;
-
-    }
-
-
-    .intro {
-
-        font-size: 14px;
-
-    }
-
-
-    .message-card p {
-
-        font-size: 16px;
-
-    }
-
-
-    .gallery img {
-
-        height: 160px;
-
-    }
-
-
-    .gallery img:first-child {
-
-        height: 200px;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       PHOTO PAGE
-
-    ----------------------------------------------------- */
-
-    .photo-page {
-
-        padding:
-
-            22px 14px 90px;
-
-    }
-
-
-    .photo-page h2 {
-
-        font-size: 29px;
-
-    }
-
-
-    .photo-page .polaroid {
-
-        width: 65%;
-
-        max-width: 200px;
-
-    }
-
-
-    .photo-page .polaroid img {
-
-        height: 145px;
-
-    }
-
-
-    .photo-page .polaroid p {
-
-        font-size: 10px;
-
-    }
-
-
-    .photo-page .next-btn {
-
-        font-size: 12px;
-
-        padding:
-
-            12px 18px;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       FINAL PAGE
-
-    ----------------------------------------------------- */
-
-    .final-message {
-
-        font-size: 16px;
-
-    }
-
-}
-
-
-/* =========================================================
-
-   LANDSCAPE MOBILE
-
-========================================================= */
-
-@media (max-width: 768px) and (orientation: landscape) {
-
-    .page {
-
-        padding:
-
-            20px 30px 90px;
-
-        justify-content: flex-start;
-
-    }
-
-
-    h1 {
-
-        font-size: 45px;
-
-    }
-
-
-    h2 {
-
-        font-size: 40px;
-
-    }
-
-
-    .message-card {
-
-        max-width: 600px;
-
-    }
-
-
-    /* -----------------------------------------------------
-
-       PHOTO PAGE
-
-    ----------------------------------------------------- */
-
-    .photo-page {
-
-        padding:
-
-            20px 30px 90px;
-
-    }
-
-
-    .photo-page .our-photos {
-
-        flex-direction: row;
-
-        justify-content: center;
-
-        gap: 20px;
-
-    }
-
-
-    .photo-page .polaroid {
-
-        width: 210px;
-
-    }
-
-
-    .photo-page .polaroid img {
-
-        height: 170px;
-
-    }
-
-
-    .photo-page .polaroid p {
-
-        font-size: 10px;
-
-    }
-
-
-    .photo-page .next-btn {
-
-        margin-top: 15px;
-
-        margin-bottom: 20px;
-
-    }
-
-}
-
-
-/* =========================================================
-
-   ACCESSIBILITY
-
-========================================================= */
-
-button:focus-visible {
-
-    outline:
-
-        2px solid #f0a9cc;
-
-    outline-offset: 4px;
-
-}
-
-
-/* =========================================================
-
-   REDUCED MOTION
-
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-
-    *::before,
-
-    *::after {
-
-        animation-duration:
-
-            0.01ms !important;
-
-        animation-iteration-count:
-
-            1 !important;
-
-        transition-duration:
-
-            0.01ms !important;
-
-        scroll-behavior:
-
-            auto !important;
-
-    }
-
-}
-
-
-/* =========================================================
-
+/* ================================
    BIRTHDAY DECORATION
-
-========================================================= */
+================================ */
 
 .birthday-decoration {
-
-    width: 100%;
-
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
-    margin-top: 25px;
+    width: 100%;
 
+    margin: 20px 0 30px;
 }
 
-
 .cake-image {
-
-    width:
-
-        min(85vw, 700px);
-
-    height: auto;
+    width: min(85vw, 700px);
 
     max-height: 40vh;
 
@@ -1989,5 +626,329 @@ button:focus-visible {
 
     display: block;
 
+    filter:
+        drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3));
+
+    animation: cakeFloat 4s ease-in-out infinite;
 }
-```
+
+
+/* ================================
+   ANIMATIONS
+================================ */
+
+@keyframes heartbeat {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+@keyframes nameGlow {
+    0%,
+    100% {
+        text-shadow:
+            0 0 10px rgba(229, 185, 210, 0.15);
+    }
+
+    50% {
+        text-shadow:
+            0 0 25px rgba(229, 185, 210, 0.45);
+    }
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.7;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(-110vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes cakeFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+    .page {
+        padding: 35px 22px 110px;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    h1 {
+        font-size: clamp(40px, 12vw, 60px);
+    }
+
+    h2 {
+        font-size: clamp(32px, 10vw, 50px);
+    }
+
+    .intro {
+        max-width: 90vw;
+
+        font-size: 18px;
+
+        line-height: 1.6;
+    }
+
+    .message-card {
+        width: 94vw;
+
+        padding: 25px 20px;
+    }
+
+    .message-card p {
+        font-size: 21px;
+    }
+
+    .cards {
+        width: 94vw;
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .card {
+        padding: 24px 20px;
+    }
+
+    .card h3 {
+        font-size: 25px;
+    }
+
+    .card p {
+        font-size: 20px;
+    }
+
+    .gallery {
+        width: 94vw;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 12px;
+    }
+
+    .gallery img:first-child {
+        grid-column: span 2;
+    }
+
+    .our-photos {
+        width: 94vw;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 30px;
+    }
+
+    .polaroid {
+        width: min(85vw, 320px);
+    }
+
+    .final-message {
+        max-width: 90vw;
+
+        font-size: 28px;
+    }
+
+    .cake-image {
+        width: min(90vw, 600px);
+
+        max-height: 42vh;
+    }
+}
+
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 400px) {
+
+    .page {
+        padding: 30px 16px 105px;
+    }
+
+    .small-title,
+    .page-number {
+        font-size: 10px;
+
+        letter-spacing: 3px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 34px;
+    }
+
+    .intro {
+        font-size: 17px;
+    }
+
+    .message-card {
+        padding: 22px 17px;
+    }
+
+    .message-card p {
+        font-size: 20px;
+    }
+
+    .card h3 {
+        font-size: 24px;
+    }
+
+    .card p {
+        font-size: 19px;
+    }
+
+    .gallery {
+        gap: 10px;
+    }
+
+    .final-message {
+        font-size: 26px;
+    }
+
+    .signature {
+        font-size: 20px;
+    }
+
+    .next-btn,
+    .restart-btn {
+        font-size: 16px;
+
+        padding: 12px 24px;
+    }
+}
+
+
+/* ================================
+   VERY SMALL MOBILE
+================================ */
+
+@media (max-width: 340px) {
+
+    .page {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    h2 {
+        font-size: 31px;
+    }
+
+    .intro {
+        font-size: 16px;
+    }
+
+    .message-card p {
+        font-size: 19px;
+    }
+
+    .final-message {
+        font-size: 24px;
+    }
+
+    .polaroid {
+        width: 90vw;
+    }
+}
+
+
+/* ================================
+   LANDSCAPE MOBILE
+================================ */
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .page {
+        padding-top: 25px;
+        padding-bottom: 90px;
+
+        overflow-y: auto;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    h2 {
+        font-size: 36px;
+    }
+
+    .cake-image {
+        max-height: 45vh;
+    }
+
+    .our-photos {
+        flex-direction: row;
+    }
+}
+
+
+/* ================================
+   ACCESSIBILITY
+================================ */
+
+button:focus-visible {
+    outline: 2px solid #e5b9d2;
+
+    outline-offset: 4px;
+}
+
+
+/* ================================
+   REDUCED MOTION
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
