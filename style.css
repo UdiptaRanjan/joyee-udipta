@@ -951,3 +951,49 @@ button:focus-visible {
         scroll-behavior: auto !important;
     }
 }
+
+/* ==========================================
+   CLICK SPRINKLE BURST
+   ========================================== */
+
+.click-sprinkle {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+
+    border-radius: 3px;
+
+    transform: translate(-50%, -50%);
+
+    animation: sprinkleBurst 0.9s ease-out forwards;
+}
+
+
+@keyframes sprinkleBurst {
+
+    0% {
+        opacity: 1;
+        transform:
+            translate(-50%, -50%)
+            scale(1)
+            rotate(0deg);
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(0.4)
+            rotate(var(--rotation));
+    }
+
+}
+
