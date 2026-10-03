@@ -125,6 +125,114 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // --------------------------------------
+    // SPRINKLE BURST
+    // --------------------------------------
+
+    function createSprinkleBurst(button) {
+
+        const rect =
+            button.getBoundingClientRect();
+
+
+        const sprinkleCount = 35;
+
+
+        for (let i = 0; i < sprinkleCount; i++) {
+
+            const sprinkle =
+                document.createElement("span");
+
+            sprinkle.className =
+                "click-sprinkle";
+
+
+            // Start from the button
+            sprinkle.style.left =
+                rect.left + rect.width / 2 + "px";
+
+            sprinkle.style.top =
+                rect.top + rect.height / 2 + "px";
+
+
+            // Random direction
+            const angle =
+                Math.random() * Math.PI * 2;
+
+            const distance =
+                80 + Math.random() * 140;
+
+
+            const x =
+                Math.cos(angle) * distance;
+
+            const y =
+                Math.sin(angle) * distance;
+
+
+            sprinkle.style.setProperty(
+                "--x",
+                x + "px"
+            );
+
+            sprinkle.style.setProperty(
+                "--y",
+                y + "px"
+            );
+
+
+            // Random rotation
+            sprinkle.style.setProperty(
+                "--rotation",
+                Math.random() * 720 - 360 + "deg"
+            );
+
+
+            // Random size
+            const size =
+                5 + Math.random() * 7;
+
+            sprinkle.style.width =
+                size + "px";
+
+            sprinkle.style.height =
+                size * 0.45 + "px";
+
+
+            // Different sprinkle colors
+            const colors = [
+                "#ff6b9d",
+                "#ffb6c1",
+                "#ffd166",
+                "#c77dff",
+                "#ff85a1",
+                "#ffffff"
+            ];
+
+            sprinkle.style.background =
+                colors[
+                    Math.floor(
+                        Math.random() * colors.length
+                    )
+                ];
+
+
+            document.body.appendChild(
+                sprinkle
+            );
+
+
+            // Remove after animation
+            setTimeout(
+                () => sprinkle.remove(),
+                900
+            );
+
+        }
+
+    }
+
+
+    // --------------------------------------
     // NEXT BUTTONS
     // --------------------------------------
 
@@ -133,6 +241,10 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener(
             "click",
             () => {
+
+                // Sprinkle burst
+                createSprinkleBurst(button);
+
 
                 showPage(
                     currentPage + 1
